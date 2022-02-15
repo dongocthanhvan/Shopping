@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<body>
+<div layout:fragment="content">
+    <div class="container-cart">
+        <h1>Shopping Cart</h1>
+        <form class="cart" method="get" th:action="@{/cart/update}">
+            <table class="table table-striped" style="margin: 35px">
+                <thead>
+                <tr class = "table-list">
+                    <th scope="col">Name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total price</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody class="infomation">
+                <tr th:each="item: ${session.cart}">
+                    <th th:text="${item.product.name}" />
+                    <td class = "shop-name">
+                        <img th:src="${'/images/' + item.product.image}">
+                    </td>
+                    <td>
+                        <input class="w-25" type="number" th:value="${item.quantity}" name="quantity"/>
+                    </td>
+                    <td th:text="${item.product.price}" />
+                    <td th:text="${item.quantity * item.product.price} " />
+                    <td>
+                        <a th:href="'/cart/remove/' + ${item.product.id}">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="cart-total" style="margin-top: 35px;">
+                <p>
+                    <span>Total Price</span>
+                    <span th:text="${total}"></span>
+                </p>
+                <div class="update-cart">
+                    <button type="submit" class="btn btn-success" style="margin-left: 85px;">Update</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="card" style="margin: 0 auto; width: 1000px">
+            <div class="card-body">
+                <form th:action="@{/cart/checkout}" method="post">
+                    <h2 class="text-center text-primary">ADD PRODUCT</h2>
+                    <fieldset class="form-group">
+                        <label>Họ và tên </label>
+                        <input class="form-control" type="text" required name="customer_name">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>Số điện thoại </label>
+                        <input class="form-control" type="text" required name="customer_phone">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>Địa chỉ </label>
+                        <input class="form-control" type="text" required name="customer_address">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>Email </label>
+                        <input class="form-control" type="text" required name="customer_email">
+                    </fieldset>
+                    <br>
+                    <p>Thời gian giao hàng dự kiến : Từ 2 - 5 ngày làm việc</p>
+                    <div class="col text-center mt-3">
+                        <button type="submit" class="btn btn-success">Đặt hàng</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<body>
+<div layout:fragment="content">
+    <div class="title-primary">
+        <a th:href="@{/category/add}">
+            <div class="logout">
+                <button type="button" class="btn btn-primary">Add new category</button>
+            </div>
+        </a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr class = "table-list">
+            <th scope="col">Category name
+                <a th:href="@{/category/asc}" class="text-decoration-none">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+                <a th:href="@{/category/desc}" class="text-decoration-none">
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+            </th>
+            <th scope="col">Category Image</th>
+            <th scope="col">Category description</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody class="infomation">
+        <tr th:each="cate: ${categories}">
+            <th th:text="${cate.name}" />
+            <td class = "shop-name">
+                <a>
+                <img th:src="${'/images/' + cate.image}">
+                </a>
+            </td>
+            <td th:text="${cate.description}" />
+            <td>
+                <a th:href="'category/update/' + ${cate.id}">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a th:href="'/category/delete/' + ${cate.id}" onclick="return confirm('Do you want to delete this category ?');" >
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

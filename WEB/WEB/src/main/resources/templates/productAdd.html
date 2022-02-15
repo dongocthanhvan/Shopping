@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<body>
+<div layout:fragment="content" class="container col-md-5 mt-4">
+  <div class="card">
+    <div class="card-body">
+      <form th:action="@{/product/save}" th:object="${product}" enctype="multipart/form-data">
+        <h2 class="text-center text-primary">ADD PRODUCT</h2>
+        <fieldset class="form-group">
+          <label>Product name </label>
+          <input class="form-control" type="text" required th:field="*{name}">
+        </fieldset>
+        <fieldset class="form-group">
+          <label>Product image </label>
+          <input class="form-control border-start-0 border-end-0 border-top-0" placeholder="Image" type="file" required th:field="*{image}">
+        </fieldset>
+
+        <div th:object="${productDetail}">
+          <fieldset class="form-group">
+            <label>Product brand </label>
+            <input class="form-control" type="text" required th:field="*{brand}">
+          </fieldset>
+          <fieldset class="form-group">
+            <label>Product color </label><br>
+              <input type="radio" th:field="*{color}" th:value="Black" th:text="' Black '" />
+              <input type="radio" th:field="*{color}" th:value="White" th:text="' White '" />
+              <input type="radio" th:field="*{color}" th:value="Blue" th:text="' Blue '" />
+              <input type="radio" th:field="*{color}" th:value="Red" th:text="' Red '" />
+              <input type="radio" th:field="*{color}" th:value="Red" th:text="' Silver '" />
+            </select>
+          </fieldset>
+          <fieldset class="form-group">
+            <label>Product description </label>
+            <input class="form-control" type="text" required th:field="*{description}">
+          </fieldset>
+          <fieldset class="form-group">
+            <label>Product price </label>
+            <input class="form-control" type="number" required th:field="*{price}">
+          </fieldset>
+        </div>
+        <fieldset class="form-group">
+          <label>Product category </label>
+          <select class="form-select" th:field="*{category}">
+            <option th:each="cate : ${categories}" th:value="${cate.id}" th:text="${cate.name}" />
+          </select>
+        </fieldset>
+        <fieldset class="form-group">
+          <label>Shop name </label>
+          <input type="checkbox" th:field="*{shop}" th:each="sh : ${shops}" th:value="${sh.id}" th:text="'  ' + ${sh.name} + '  '" />
+        </fieldset>
+        <div class="col text-center mt-3">
+          <button type="submit" class="btn btn-success">ADD</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

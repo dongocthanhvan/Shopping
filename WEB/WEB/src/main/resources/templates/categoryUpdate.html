@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<body>
+<div layout:fragment="content" class="container col-md-5 mt-4">
+  <div class="card">
+    <div class="card-body">
+      <form th:action="@{/category/save}" th:object="${category}">
+        <h2 class="text-center text-primary">UPDATE CATEGORY</h2>
+        <fieldset class="form-group">
+          <label>Category name </label>
+          <input class="form-control" type="text" required th:field="*{name}">
+        </fieldset>
+        <fieldset class="form-group">
+          <label>Category description </label>
+          <input class="form-control" type="text" required th:field="*{description}">
+        </fieldset>
+        <fieldset class="form-group">
+          <label>Category image </label>
+          <input class="form-control" type="text" required th:field="*{image}">
+        </fieldset>
+        <input type="hidden" th:field="*{id}">
+        <div class="col text-center mt-3">
+          <button type="submit" class="btn btn-success">UPDATE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

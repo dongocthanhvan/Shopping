@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <table class="table table-striped">
+        <thead>
+        <tr class = "table-list">
+            <th scope="col">Product name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+<!--            <th scope="col">Customer name</th>-->
+<!--            <th scope="col">Order date</th>-->
+<!--            <th scope="col">Total Price</th>-->
+        </tr>
+        </thead>
+        <tbody class="infomation">
+        <tr th:each="orderDetail: ${orderDetail}">
+            <td th:text="${orderDetail.product.name}" />
+            <td th:text="${orderDetail.quantity}" />
+            <td th:text="${orderDetail.price}" />
+<!--            <td th:text="${order.date}" />-->
+<!--            <td th:text="${order.totalPrice}" />-->
+            <!--            <td th:text="${order.i-->
+            <!--            <td th:text="${orderDetail.orders.customer_name}" />-->
+            <!--            <td th:text="${orderDetail.orders.customer_address}" />-->
+            <!--            <td th:text="${orderDetail.orders.customer_phone}" />-->
+            <!--            <td th:text="${orderDetail.orders.customer_email}" />-->
+            <!--            <td th:text="${orderDetail.orders.date}" />-->
+            <!--            <td th:text="${orderDetail.quantity}" />-->
+            <!--            <th th:text="${orderDetail.price}" />-->
+            <!--            <td th:text="${orderDetail.orders.totalPrice}" />-->
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

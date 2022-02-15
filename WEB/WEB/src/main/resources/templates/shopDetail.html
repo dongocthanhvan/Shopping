@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<body>
+<div layout:fragment="content">
+    <div class="containerProductDetail">
+        <div class="card">
+            <div class="images">
+                <div class="product-image"><img id="big-image-shop" th:src="${'/images/' + shop.image}"></div>
+            </div>
+            <div class="infos">
+                <h1 th:text="${shop.name}" />
+                <div class="reviews">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="brand">
+                    <h3>
+                        Address: <span th:text="${shop.address}" />
+                    </h3>
+                </div>
+                <div class="brand">
+                    <h3>
+                        Phone: <span th:text="${shop.phone}" />
+                    </h3>
+                </div>
+                <div id="more-infos">
+                    <h2 class="choose">Description</h2>
+                </div>
+                <div id="info-content">
+                    <p  class="paragraph-shop" style="display: block;"><h3 th:text="${shop.description}" /></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

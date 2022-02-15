@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap}" />
+    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css2?family=Baumans&display=swap}" />
+    <link rel="stylesheet" th:href="@{https:kit-pro.fontawesome.com/releases/v5.12.0/css/pro.min.css}" />
+    <link rel = "stylesheet" th:href="@{/css/owl.carousel.min.css}" />
+    <link rel = "stylesheet" th:href="@{/css/owl.theme.default.min.css}" />
+<!--    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />-->
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row row-align">
+                <div class="col-xl-2">
+                    <a th:href="@{/}">
+                        <div class="logo">
+                            <span>Corgi Shop</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xl-4">
+                    <div class="menu">
+                        <ul>
+                            <li><a th:href="@{/product}" th:text="Product" /></li>
+                            <li>
+                                <a th:href="@{/category}" th:text="Category" />
+                            </li>
+                            <li><a th:href="@{/shop}" th:text="Shop" /></li>
+                            <li><a th:href="@{/order}" th:text="OrderList" /></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <form class="search" action="/product/search">
+                        <input type="text" placeholder="Search at here..." name = "name">
+                        <!--                            <button class="button-search"><i class="fal fa-search"></i></button>-->
+                    </form>
+                </div>
+                <div class="col-xl-2">
+                    <div id="shopping">
+                        <a th:href="@{/cart}">
+                            <i class="fas fa-cart-plus" id="items-added-productDetail"></i>
+                        </a>
+                    </div>
+                    <div class="logout">
+                        <a th:href="@{/logout}">
+                            <button type="button" class="btn btn-primary">Logout</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div layout:fragment="content">
+    <!-- content page will override this -->
+</div>
+<footer>
+    <div class="footer">
+        <div class="container">
+            <div class="row row-align">
+                <div class="col-xl-6">
+                    <div class="logo">
+                        Corgi <span>Shop</span>
+                    </div>
+                    <h6>
+                        Delivering the latest product trends and industry news straight to your inbox
+                    </h6>
+                    <div class="social-media">
+                        <a href=""><i class="fab fa-facebook-f"></i></a>
+                        <a href=""><i class="fab fa-youtube"></i></a>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                        <a href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="title-footer">
+                        Customer Services
+                    </div>
+                    <div class="menu-footer">
+                        <ul>
+                            <li><a href="">Help Center</a></li>
+                            <li><a href="">Report Abuse</a></li>
+                            <li><a href="">Policies & Rules</a></li>
+                            <li><a href="">Get Paid for Your Feedback</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="title-footer">
+                        About Us
+                    </div>
+                    <div class="menu-footer">
+                        <ul>
+                            <li><a href="">About Corgi Shop</a></li>
+                            <li><a href="">Sitemap</a></li>
+                            <li><a href="">Recuiment</a></li>
+                            <li><a href="">Stores</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

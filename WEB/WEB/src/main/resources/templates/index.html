@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" th:href="@{/css/owl.carousel.min.css}" />
+    <link rel = "stylesheet" th:href="@{/css/owl.theme.default.min.css}" />
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="banner">
+        <div class="slide-show owl-carousel owl-theme" id="banner-slider">
+            <div class="item">
+                <div class="__banner">
+                    <img src="images/sample-1.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="standard">
+            <div class="row">
+                <div class="col-xl-3">
+                    <div class="item">
+                        <div class="image">
+                            <img src="images/static-icons-1.png" alt="">
+                        </div>
+                        <div class="info" style="margin-left: 40px;">
+                            <span>FreeShipping</span>
+                            <br>
+                            On all orders over $75.00
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="item">
+                        <div class="image">
+                            <img src="images/static-icons-2.png" alt="">
+                        </div>
+                        <div class="info">
+                            <span>Free Returns</span>
+                            <br>
+                            Returns are free within 9 days
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="item">
+                        <div class="image">
+                            <img src="images/static-icons-3.png" alt="">
+                        </div>
+                        <div class="info">
+                            <span>Security</span>
+                            <br>
+                            Your infomation is secure
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="item">
+                        <div class="image">
+                            <img src="images/static-icons-4.png" alt="">
+                        </div>
+                        <div class="info">
+                            <span>Support 24/7</span>
+                            <br>
+                            Contact us 24 hours a day
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="title-primary">
+            <h1>New Arrivalss</h1>
+        </div>
+        <div class="row">
+            <div class="col-xl-3" th:each="product : ${products}">
+                <div class="product">
+                    <div class="category">New</div>
+                    <a th:href="'product/' + ${product.id}" >
+                        <img th:src="${'/images/' + product.image}" class ="img-product">
+                        <h2>GRAPHIC CORNER</h2>
+                        <h1>
+                            <a th:text="${product.name}" />
+                        </h1>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="price">
+                            <span th:text="${product.price}" />
+                        </div>
+                        <div class="edit-update-button">
+                            <a th:href="'product/update/' + ${product.id}">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a th:href="'cart/buy/' + ${product.id}">
+                                <i class="fas fa-cart-plus"></i>
+                            </a>
+                            <a th:href="'product/delete/' + ${product.id}"
+                               onclick="return confirm('Do you want to delete this product ?');" >
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

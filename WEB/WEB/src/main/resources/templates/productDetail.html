@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".big-image").mouseenter(function(){
+                $(".big-image").animate({
+                    height: '400px',
+                    width: '400px'
+                });
+            });
+        });
+        $(document).ready(function(){
+            $(".big-image").mouseleave(function(){
+                $(".big-image").animate({
+                    height: '350px',
+                    width: '350px'
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="containerProductDetail">
+        <div class="card">
+            <div class="images">
+                <div class="product-image"><img class="big-image" th:src="${'/images/' + product.image}"></div>
+            </div>
+            <div class="infos">
+                <h1 th:text="${product.name}" />
+                <div class="reviews">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="price">
+                    <h3 th:text="${product.price} + ' $'" />
+                </div>
+                <div class="brand">
+<!--                    <h3 th:text="'Brand: ' + ${productDetail.brand}" />-->
+                    <h3>
+                        Brand: <span th:text="${productDetail.brand}" />
+                    </h3>
+                </div>
+                <div class="shop">
+                    <ul th:each="shop : ${product.shop}" style = "list-style-type: none">
+                        <li>
+                            <h3>
+                                Shop:
+                                <span>
+                                    <a class="text-decoration-none" th:text="${shop.name}" th:href="'/shop/' + ${shop.id}"/>
+                                </span>
+                            </h3>
+                        </li>
+                    </ul>
+                </div>
+                <div id="more-infos">
+                    <h5 class="choose">Description</h5>
+                </div>
+                <div id="info-content">
+                    <p  class="paragraph" style="display: block;"><h3 th:text="${productDetail.description}" /></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

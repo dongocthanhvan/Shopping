@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<body>
+<div layout:fragment="content">
+    <div class="title-primary">
+        <a th:href="@{/shop/add}">
+            <div class="logout">
+                <button type="button" class="btn btn-primary">Add new shop</button>
+            </div>
+        </a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr class = "table-list">
+            <th scope="col">Shop name
+<!--                <i class="fas fa-arrow-up"></i>-->
+<!--                <i class="fas fa-arrow-down"></i>-->
+                <a th:href="@{/shop/asc}" class="text-decoration-none">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+                <a th:href="@{/shop/desc}" class="text-decoration-none">
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+            </th>
+            <th scope="col">Shope Image</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone number</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody class="infomation">
+        <tr th:each="shop: ${shops}">
+            <th th:text="${shop.name}" />
+            <td class = "shop-name">
+                <a th:href="'shop/' + ${shop.id}"/>
+                <img th:src="${'/images/' + shop.image}">
+                <!--                <img th:src="${'/images/' + category.image}" width="150" height="150">-->
+                </a>
+            </td>
+            <td th:text="${shop.address}" />
+            <td th:text="${shop.phone}" />
+            <td>
+                <a th:href="'shop/update/' + ${shop.id}">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a th:href="'shop/delete/' + ${shop.id}" onclick="return confirm('Do you want to delete this shop ?');" >
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
